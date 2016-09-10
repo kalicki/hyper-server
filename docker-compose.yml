@@ -14,7 +14,7 @@ services:
 
   # app
   app:
-    image: GITHUB DEPLOY?
+    image: node:latest
     container_name: app
     links:
     - rethinkdb:rethinkdb

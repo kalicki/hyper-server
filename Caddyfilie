@@ -1,9 +1,9 @@
 # Caddyserver runs https by default
-kampeiro.com.br {
+domain.com {
   proxy / app
   proxy /api api
 
-  tls filipe.kalicki@gmail.com
+  tls email@email.com
   dns cloudflare
   gzip
   header / {
