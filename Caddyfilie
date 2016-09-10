@@ -1,0 +1,17 @@
+# Caddyserver runs https by default
+kampeiro.com.br {
+  proxy / app
+  proxy /api api
+
+  tls filipe.kalicki@gmail.com
+  dns cloudflare
+  gzip
+  header / {
+    # Enable HTTP Strict Transport Security (HSTS) to force clients to always
+    Strict-Transport-Security "max-age=31557600; includeSubDomains;"
+    X-XSS-Protection "1"
+    X-Content-Type-Options "nosniff; always"
+    X-Frame-Options "SAMEORIGIN; always"
+    Content-Security-Policy "default-src 'self'; script-src 'self' *.google-analytics.com";
+	}
+}

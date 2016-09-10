@@ -1,0 +1,32 @@
+version: '2'
+services:
+  # Caddy (Server with Let`s encrypt)
+  caddy:
+  container_name: caddy
+    build: .
+    restart: always
+      - "443:443"
+    volumes:
+    - ./Caddyfile:/Caddyfile
+    # - ./caddy:/root/.caddy
+  links:
+    - rethinkdb:rethinkdb
+
+  # app
+  app:
+    image: GITHUB DEPLOY?
+    container_name: app
+    links:
+    - rethinkdb:rethinkdb
+
+  # API
+  api:
+    image: node:latest
+    container_name: api
+    links:
+    - rethinkdb:rethinkdb
+
+  # DB
+  rethinkdb:
+    image: rethinkdb:latest
+    container_name: rethinkdb
